@@ -1,4 +1,5 @@
 package com.mcdermer.apothecary;
+import com.mcdermer.apothecary.crafting.ModCrafting;
 import com.mcdermer.apothecary.items.ModItems;
 import com.mcdermer.apothecary.proxy.CommonProxy;
 import net.minecraftforge.fml.common.Mod;
@@ -24,7 +25,7 @@ public class Main
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-       
+		ModCrafting.init();
     }
     
     @EventHandler
