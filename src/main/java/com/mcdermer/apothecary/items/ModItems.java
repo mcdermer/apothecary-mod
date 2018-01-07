@@ -1,11 +1,15 @@
 package com.mcdermer.apothecary.items;
 
+import com.mcdermer.apothecary.blocks.ModBlocks;
+import com.mcdermer.apothecary.proxy.ItemModelProvider;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModItems {
 	
+	public static SeedBase seedCamellia;
 	public static ItemBase leafCamellia;
 	public static ItemBase driedCamellia;
 	public static ItemBase groundCamellia;
@@ -13,9 +17,10 @@ public class ModItems {
 
 	public static void init() 
 	{
-		leafCamellia = register(new ItemBase("leafCamellia", "§oCamellia Sinensis").setCreativeTab(CreativeTabs.MATERIALS));
-		driedCamellia = register(new ItemBase("driedCamellia", "§oCamellia Sinensis").setCreativeTab(CreativeTabs.MATERIALS));
-		groundCamellia = register(new ItemBase("groundCamellia", "§oCamellia Sinensis").setCreativeTab(CreativeTabs.MATERIALS));
+		leafCamellia = register(new ItemBase("leafCamellia", "Camellia Sinensis").setCreativeTab(CreativeTabs.MATERIALS));
+		seedCamellia = (SeedBase) register(new SeedBase("seedCamellia", ModBlocks.cropTea, "Camellia Sinensis").setCreativeTab(CreativeTabs.MATERIALS));
+		driedCamellia = register(new ItemBase("driedCamellia", "Camellia Sinensis").setCreativeTab(CreativeTabs.MATERIALS));
+		groundCamellia = register(new ItemBase("groundCamellia", "Camellia Sinensis").setCreativeTab(CreativeTabs.MATERIALS));
 		mortarpestle = register(new ItemCraftingTool("mortarpestle", null).setCreativeTab(CreativeTabs.TOOLS));
 	}
 	
@@ -23,12 +28,9 @@ public class ModItems {
 	{
 		GameRegistry.register(item);
 		
-		if (item instanceof ItemBase) 
+		if (item instanceof ItemModelProvider) 
 		{
-				((ItemBase)item).registerItemModel();
-		} else if (item instanceof ItemCraftingTool) 
-		{
-			((ItemCraftingTool)item).registerItemModel();
+				((ItemModelProvider)item).registerItemModel(item);
 		}
 		
 		return item;

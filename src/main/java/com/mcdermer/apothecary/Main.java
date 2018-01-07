@@ -1,4 +1,5 @@
 package com.mcdermer.apothecary;
+import com.mcdermer.apothecary.blocks.ModBlocks;
 import com.mcdermer.apothecary.crafting.ModCrafting;
 import com.mcdermer.apothecary.items.ModItems;
 import com.mcdermer.apothecary.proxy.CommonProxy;
@@ -19,6 +20,7 @@ public class Main
     @EventHandler
     public void preinit(FMLPreInitializationEvent event) 
     {
+    	ModBlocks.init();
     	ModItems.init();
     }
     
